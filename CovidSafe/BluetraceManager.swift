@@ -11,7 +11,7 @@ class BluetraceManager {
     static let shared = BluetraceManager()
     
     private init() {
-        queue = DispatchQueue(label: "BluetraceManager")
+        queue = DispatchQueue(label: "BluetraceManager", qos: .utility)
         peripheralController = PeripheralController(peripheralName: "TR", queue: queue)
         centralController = CentralController(queue: queue)
         centralController.centralDidUpdateStateCallback = centralDidUpdateStateCallback
